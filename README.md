@@ -61,11 +61,11 @@ The server will start at http://localhost:3000.
 
 🧪 API Endpoints
 Method	Endpoint	Description
-GET	/books	Get all books
-GET	/books/:id	Get a book by ID
-POST	/books	Add a new book
-PUT	/books/:id	Update a book
-DELETE	/books/:id	Delete a book
+GET	http://localhost:3000/books	              Get all books
+GET	http://localhost:3000/books/:id	          Get a book by ID
+POST	http://localhost:3000/books	            Add a new book
+PUT	http://localhost:3000/books/:id         	Update a book
+DELETE	http://localhost:3000/books/:id	      Delete a book
 
 📌 Sample Request Format (POST)
 json
