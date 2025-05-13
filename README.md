@@ -51,12 +51,8 @@ bash
 Copy
 Edit
 npm install
-Run the development server:
+Run the development server: npx nodemon server.ts
 
-bash
-Copy
-Edit
-npm run dev
 The server will start at http://localhost:3000.
 
 🧪 API Endpoints
