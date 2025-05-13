@@ -1,0 +1,21 @@
+### Get all books
+GET http://localhost:3000/books
+
+### Add a new book
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  
+  "title": "Deep Work",
+  "author": "Cal Newport",
+  "publishedYear": 2014
+}
+
+### Get a book by ID (replace with actual ID)
+### Get a book by ID (replace with actual ID)
+GET http://localhost:3000/books/replace-with-actual-id
+
+### Delete a book by ID
+### Delete a book by ID (replace with actual ID)
+DELETE http://localhost:3000/books/replace-with-actual-id
