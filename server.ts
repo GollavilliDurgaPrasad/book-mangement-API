@@ -1,5 +1,8 @@
 import express from 'express';
 import { BookController } from './controllers/bookController';
+import cors from "cors";
+app.use(cors());
+
 
 const app = express();
 app.use(express.json());
