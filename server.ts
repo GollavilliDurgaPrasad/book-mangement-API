@@ -1,13 +1,12 @@
 import express from 'express';
 import { BookController } from './controllers/bookController';
-import cors from "cors";
-app.use(cors());
-
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
-// Define the routes for books
+// Define routes
 app.get('/books', BookController.getAllBooks);
 app.get('/books/:id', BookController.getBookById);
 app.post('/books', BookController.addBook);
