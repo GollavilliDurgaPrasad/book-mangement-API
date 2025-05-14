@@ -27,30 +27,36 @@ const bookService_1 = require("../services/bookService");
 const importBooks = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, e_1, _b, _c;
     try {
-        if (!req.file)
-            return res.status(400).json({ message: "CSV file is required" });
-        const filePath = path_1.default.join(__dirname, "../uploads", req.file.filename);
+        // Check if file was uploaded
+        if (!req.file) {
+            return res.status(400).json({ message: 'CSV file is required' });
+        }
+        const filePath = path_1.default.join(__dirname, '../uploads', req.file.filename);
         const fileStream = fs_1.default.createReadStream(filePath);
         const rl = readline_1.default.createInterface({ input: fileStream });
         let lineNumber = 0;
         let addedBooksCount = 0;
         const errorRows = [];
         try {
+            // Process each line in the CSV
             for (var _d = true, rl_1 = __asyncValues(rl), rl_1_1; rl_1_1 = yield rl_1.next(), _a = rl_1_1.done, !_a;) {
                 _c = rl_1_1.value;
                 _d = false;
                 try {
                     const line = _c;
                     lineNumber++;
+                    // Skip the header row
                     if (lineNumber === 1)
-                        continue; // Skip header
-                    const [title, author, publishedYearStr] = line.split(",");
-                    const publishedYear = parseInt(publishedYearStr);
+                        continue;
+                    const [title, author, publishedYearStr] = line.split(',');
+                    const publishedYear = parseInt(publishedYearStr, 10);
+                    // Validate data
                     if (!title || !author || isNaN(publishedYear)) {
                         errorRows.push(`Row ${lineNumber}: Invalid data`);
                         continue;
                     }
-                    bookService_1.BookService.addBook({ title, author, publishedYear });
+                    // Add the book to the database or service
+                    yield bookService_1.BookService.addBook({ title, author, publishedYear });
                     addedBooksCount++;
                 }
                 finally {
@@ -65,7 +71,9 @@ const importBooks = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
             }
             finally { if (e_1) throw e_1.error; }
         }
-        fs_1.default.unlinkSync(filePath); // delete uploaded file
+        // Delete the uploaded file after processing
+        fs_1.default.unlinkSync(filePath);
+        // Send a response with the result
         res.status(200).json({ addedBooksCount, errorRows });
     }
     catch (error) {
