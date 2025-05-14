@@ -2,11 +2,9 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
-    "outDir": "dist",
-    "rootDir": ".",
     "strict": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true
-  },
-  "include": ["server.ts", "controllers", "services", "models"]
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
 }

@@ -9,7 +9,7 @@ Content-Type: application/json
   
   "title": "Deep Work",
   "author": "Cal Newport",
-  "publishedYear": 2014
+  "publishedYear": 2019
 }
 
 ### Get a book by ID (replace with actual ID)
